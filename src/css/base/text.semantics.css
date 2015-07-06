@@ -1,0 +1,12 @@
+/*
+## Base Inline Text Elements
+
+
+*/
+strong {
+  font-weight: var(--text-weight--bold);
+}
+small {
+  font-size: var(--text-size--small);
+}
+

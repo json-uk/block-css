@@ -1,0 +1,31 @@
+/*
+## Generic Box-Sizing
+
+Updated to make overriding easier.
+*/
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+## Labotomised Owl Selector
+
+A generic style for setting consistent module margins. Read the A List Apart article: [Axiomatic CSS and Lobotomized Owls](http://alistapart.com/article/axiomatic-css-and-lobotomized-owls)
+
+Relies on `postcss-vertical-rhythm` to set vertical spacing
+
+```CSS
+* + * {
+  margin-top: 1vr;
+    
+}
+```
+
+*/
+* + * {
+  margin-top: 1vr;/* 24px */
+    
+}

@@ -1,0 +1,183 @@
+/** @define Media; weak */
+
+/*
+Media
+
+Used to create container for media such as: images and video. Immediate child node must have a class of 
+<code class="language-markup">.Media-object</code> .
+
+Markup:
+  <figure class="Media">
+    <img class="Media-object" src="//dummyimage.com/600/545454/f5f5f5.jpg"/>
+  </figure>
+
+Styleguide: objects.media
+*/
+.Media {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+}
+
+.Media-item {
+  
+}
+/*
+Flexible Media
+
+Buy adding a class of <code class="language-markup">.Media--flex</code> to the Media container and combined with 
+<code class="language-markup">.Media--aspectRatioXbyY</code> classes creates a 
+container that maintains aspect ratio by using padding. 
+
+The <code class="language-markup">.Media-object</code> is absolutely positioned within the box and stretched to the edges. 
+
+.Media--flex.Media--ratio16by9  - 16:9 aspect ratio
+.Media--flex.Media--ratio5by4   - 5:4 aspect ratio
+.Media--flex.Media--ratio4by3   - 4:3 aspect ratio
+.Media--flex.Media--ratio3by2   - 3:2 aspect ratio
+.Media--flex.Media--ratio2by1   - 2:1 aspect ratio
+.Media--flex.Media--ratio1by1   - 1:1 aspect ratio
+
+Markup:
+<figure class="Media {{modifier_class}}">
+  <img class="Media-object" src="//dummyimage.com/600/545454/f5f5f5.jpg"/>
+</figure>
+
+
+Styleguide objects.media.flex
+*/
+.Media--flex {
+  height: 0;
+  overflow: hidden;
+}
+
+.Media--flex > .Media-object {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.Media--ratio16by9 {
+  padding-bottom: var(--ratio-16-9);
+}
+
+.Media--ratio5by4 {
+  padding-bottom: var(--ratio-5-4);
+}
+
+.Media--ratio4by3 {
+  padding-bottom: var(--ratio-4-3);
+}
+
+.Media--ratio3by2 {
+  padding-bottom: var(--ratio-3-2);
+}
+
+.Media--ratio2by1 {
+  padding-bottom: var(--ratio-2-1);
+}
+
+.Media--ratio1by1 {
+  padding-bottom: var(--ratio-1-1);
+}
+
+/*
+Flexible Media Backgrounds
+
+Flexible backgrounds support the same <code class="language-markup">.Media--ratioXbyY</code> classes. You must also add your own background-image styles (inline rule only an example.)
+
+Markup:
+<div class="Media Media--flex Media--flexBg Media--ratio16by9" style="background-image: url(//dummyimage.com/600/545454/f5f5f5.jpg);">
+  <!-- No content -->
+</div>
+
+
+
+Styleguide: objects.media.flex.background
+*/
+.Media--flexBg {
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+/* 
+Media Constrain (inline)
+
+This class constrains the image to the parent container instead of stretching it to fill.
+
+Markup:
+<figure class="Media Media--flex Media--ratio16by9 Media--constrain">
+  <img class="Media-object" src="//dummyimage.com/600/545454/f5f5f5.jpg"/>
+</figure>
+
+
+Styleguide: objects.media.flex.constrain
+*/
+.Media--constrain > .Media-object {
+  width: auto;
+  max-height: 100%;
+}
+
+/* 
+Media Constrain (backgrounds)
+
+Same as inline except using backgrounds. Browsers that do not support <code class="language-css">background-size</code> property will ignore this rule.
+
+Markup:
+<div class="Media Media--flex Media--flexBackground Media--ratio16by9 Media--constrainBg" style="background-image: url(//dummyimage.com/600/545454/f5f5f5.jpg);">
+  <!-- No content -->
+</div>
+
+Compatible in IE9+ and all modern browsers.  
+
+Styleguide: objects.media.flex.constrain.background
+*/
+.Media--constrainBg {
+  background-size: contain;
+}
+
+
+/* 
+Vertical and Horizontal Centering (inline)
+
+Markup:
+<figure class="Media Media--flex Media--ratio16by9 Media--center">
+  <img class="Media-object" src="//dummyimage.com/600/545454/f5f5f5.jpg"/>
+</figure>
+
+Styleguide: objects.media.flex.center
+*/
+.Media--center > .Media-object {
+  top: 50%;
+  left: 50%;    
+  transform: translate3d(-50%, -50%, 0);
+} 
+
+/* Fallback for older browsers */
+.no-transform .Media--center  > .Media-object {
+  margin-top: -50%;
+  margin-left: -50%;
+}
+
+/* 
+Vertical and Horizontal Centering (background)
+
+Markup:
+<div class="Media Media--flexBg Media--ratio16by9 Media--centerBg" style="background-image: url(//dummyimage.com/600/545454/f5f5f5.jpg);">
+  <!-- no content -->
+</div>
+
+Styleguide: objects.media.flex.center.background
+*/
+.Media--centerBg {
+  background-position: 50% 50%;
+} 
+
+
+
+

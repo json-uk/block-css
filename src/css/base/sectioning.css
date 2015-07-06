@@ -1,0 +1,11 @@
+/*
+## Basic Sectioning Elements
+
+
+*/
+html {
+  font-size: var(--root-font-size);
+}
+body {
+  font: var(--text-size)/var(--default-line-height) var(--font-sans-serif);
+}

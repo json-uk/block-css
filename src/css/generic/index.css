@@ -1,0 +1,9 @@
+/**
+* @name Generic
+* 
+* @description Ground zero styles; resets and normalisation
+* @template layouts/app
+*/
+@import "normalize.css/normalize.css";
+
+@import "box.css";

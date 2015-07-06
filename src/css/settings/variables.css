@@ -1,0 +1,95 @@
+/*
+Variables
+
+Styleguide: settings.variables
+*/
+:root {
+  --base-unit: 8px; /* Used for margin and padding multipliers */
+  --default-line-height: 1.5;
+  --scale: 1.618;
+  
+  /*  
+  ### Vertical Rhythm  
+
+  Used as a base unit to multiply against. The rhythm is set by multiplying `--font-size` and `--line-height` variables.
+  For example, if you wanted to retun a value that was equal to 2x the vertical rhythm you would do the following:
+
+  ```CSS
+  .foo {
+      min-height: calc(var(--rhythm-unit) * 2);
+  ```
+
+  */
+  --rhythm-unit: calc(var(--font-size) * var(--default-line-height));  
+  
+  
+/* 
+### Aspect Ratios
+
+Common aspect ratio variables    
+*/
+    --ratio-16-9: 56.25%; /* (9 / 16 * 100)  */
+    --ratio-5-4: 80%; /* (4 / 5 * 100) */
+    --ratio-4-3: 75%; /* (3 / 4 * 100) */
+    --ratio-3-2: 66.66%; /* (2 / 3 * 100) */
+    --ratio-2-1: 50%; /* (1 / 2 * 100) */
+    --ratio-1-1: 100%; 
+
+
+/*
+## Global Site Min and Max Widths
+
+Min and max site widths are used in a couple ways. Min width is used for non-media query supporting browsers to set a fixed width. Max
+
+*/
+  --site-width--min: 60em;/* [960 / 16 = 60]*/
+  --site-width--max: 85em;/* [1360 / 16] */
+}
+
+/*
+## Custom Media Queries
+
+In block, we define a basic set of min and max-width edia queries. These are the ones used within components. Define additional media queries `settings.theme.css`. **Note:** to ensure your layouts scale and media queries are applied properly always use `em` unit.
+
+You will notice below two things: 1). There is not a min-width media designation for small screens, and 2). There isn't a max-width designation for lg screens. This is because, by default Bloc{CSS} is mobile-first and the first query is _no_ query. Second, we set a max-width globally and without a media query. You may add as many as your site requires, these are just the ones pre-designed.
+
+- `--md-viewport--min`: (540px) min-width of medium screens
+- `--lg-viewport--min`: (960px) min-width of lg screens
+- `--sm-viewport--max`: (539px) max-width of sm screens
+- `--md-viewport--max`: (959px) max-width of md screens
+
+### Define Custom Values
+
+To create custom variables for use in your media queries use the following formula where **<VAR_NAME>** is the name of your media variable, and **<EM_VALUE>** is the min or max width in ems. Notice the shorthand to min (`<=`) and max (`>=`) width: 
+
+- Min-Width: `@custom-media --<VAR_NAME> (width <= <EM_VALUE>)` 
+- Max-Width: `@custom-media --<VAR_NAME> (width >= <EM_VALUE>)`
+- Combination of both: `@custom-media --<VAR_NAME> (width <= <EM_VALUE>) and (width >= <EM_VALUE>)`
+
+### Usage
+
+```CSS
+@media all and (--md-viewport--min) {
+  .foo {
+    color: rebeccapurple;
+  }
+}
+
+```
+
+### CSS Output
+
+```CSS
+@media all and (min-width: 33.75em) {
+  .foo {
+    color: rebeccapurple;
+  }
+}
+
+  
+*/
+@custom-media --sm-viewport--max (width >= 33.6875em); /* [539 / 16] */
+@custom-media --md-viewport--max (width >= 59.9375em); /* [959 / 16] */
+
+@custom-media --md-viewport--min (width <= 33.75em); /* [540 / 16] */
+@custom-media --lg-viewport--min (width <= 60em); /* [960 / 16] */

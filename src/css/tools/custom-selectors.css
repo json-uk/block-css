@@ -1,0 +1,17 @@
+/* 
+* @name Custom Selectors
+* 
+* @description Custom selectors are pre-built selector groups used to reduce dev overhead. See [PostCSS Custom Selectors](https://github.com/postcss/postcss-custom-selectors) for more information
+*/
+
+/**
+@name :--any-link
+
+@desciption Emulates the :any-link pseudo-class
+
+@markup
+a:--any-link {
+  color: blue
+}
+*/
+@custom-selector :--any-link :link, :visited;

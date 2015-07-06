@@ -1,0 +1,17 @@
+/*
+## Links
+
+Basic links styles
+
+```HTML
+<a href="">Link</a>
+*/
+a:--any-link {
+  color: var(--text-link-color);
+  text-decoration: var(--text-link-decoration);
+}
+
+a:hover {
+  color: var(--text-link-color--hover);
+  text-decoration: var(--text-link-decoration--hover);
+}

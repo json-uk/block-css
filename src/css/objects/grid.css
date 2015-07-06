@@ -1,0 +1,122 @@
+/** @define Grid;weak */
+:root {
+  --Grid-gutter: .5vr;
+  --Grid-gutter--x2: calc(var(--Grid-gutter) * 2);
+}
+
+/*
+Grid
+
+The BlockCSS grid system is simple in nature, yet very powerful. 
+
+.Grid       - Creates the parent grid context. 
+.Grid-item  - CSS class for each immediate child grid __column__.
+
+
+Styleguide: objects.grid
+*/
+.Grid {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  text-align: left;
+}
+.Grid > * {
+  margin-top: 0;
+}
+.Grid > .Grid-item {
+  font-size: var(--font-size);
+}
+
+.Grid-item {
+  display: inline-block;
+  width: 100%; /* forces full-width by default */
+  vertical-align: top;
+}
+
+/*
+Grid System Modifiers
+
+Modifiers are special classes which extend the functionality of the grid system. Use them in conjunction with the 
+<code class="language-markup">.Grid</code> and <code class="language-markup">.Grid-item</code> classes.
+
+Styleguide: objects.grid.modifiers
+*/
+
+/*
+Grid Gutter Modifiers
+
+This adds gutters to the <code class="language-css">.Grid-item</code>s. 
+
+.Grid--withGutter    - Adds left and right padding equal to <code class="language-css">--Grid-gutter</code> variable.
+.Grid--withGutterX2  - Adds twice as much left and right padding.
+
+
+Styleguide: objects.grid.modifiers.gutters
+*/
+.Grid--withGutter {
+  margin-right: -var(--Grid-gutter);
+  margin-left: -var(--Grid-gutter);
+  
+  & > .Grid-item {
+    padding-right: var(--Grid-gutter);
+    padding-left: var(--Grid-gutter);
+  }  
+}
+
+.Grid--withGutterX2 {
+  margin-right: -var(--Grid-gutter--x2);
+  margin-left: -var(--Grid-gutter--x2);
+  
+  & > .Grid-item {
+    padding-right: var(--Grid-gutter--x2);
+    padding-left: var(--Grid-gutter--x2);
+  }  
+}
+
+/*
+Grid Alignment Modifiers
+  
+Aligns all grid cells by adjusting <code class="language-css">text-align</code> and <code class="language-css">vertical-align</code> properties. 
+
+.Grid--alignCenter   - horizontally centers <code class="language-css">.Grid-item</code>s.
+.Grid--alignRight    - horizontally aligns <code class="language-css">.Grid-item</code>s to the right.
+.Grid--alignLeft     - horizontally aligns <code class="language-css">.Grid-item</code>s to the right.
+.Grid--alignMiddle   - vertically aligns <code class="language-css">.Grid-item</code>s to the midde of parent.
+.Grid--alignBottom   - vertically aligns <code class="language-css">.Grid-item</code>s to the bottom of parent.
+
+
+Styleguide: objects.grid.modifiers.align
+*/
+.Grid--alignCenter {
+  text-align: center;
+}
+
+.Grid--alignRight {
+  text-align: right;
+}  
+
+.Grid--alignLeft {
+  text-align: left;
+} 
+
+.Grid--alignMiddle > .Grid-item {
+  vertical-align: middle;
+}
+
+.Grid--alignBottom > .Grid-item {
+  vertical-align: bottom;
+}
+
+/*
+Grid Item Alignment 
+
+.Grid-item--center  - Centers a single grid cell. All other <code class="language-markup">.Grid-item</code>s remain the same.
+
+Styleguide: objects.grid.modifiers.center
+*/
+.Grid-item--center {
+  display: block;
+  margin: 0 auto;
+}

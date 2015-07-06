@@ -1,0 +1,10 @@
+/* 
+Settings
+ 
+This is the settings file. Settings are global functional, colour and theme variables.
+ 
+Styleguide: Settings
+*/
+@import "variables.css";
+@import "webcolors/material/index.css";
+@import "theme.css";

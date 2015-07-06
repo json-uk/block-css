@@ -1,0 +1,44 @@
+/** @define Title */
+:root {
+  --Title-padding: .5vr;
+  --Title-border-width: 1px;
+  --Title-border-color--light:;
+  --Title-border-color--dark:;
+  --Title-border-style: solid;
+  --Title-border: var(--Title-border-width) var(--Title-border-style);
+  --Title-background: none;
+}
+/* SG
+# Titles
+
+
+*/
+.Title {
+  width: 100%;  
+}
+
+.Title--page {
+    
+}
+
+.Title--section {
+  margin-top: calc(var(--Title-padding) * 4);
+}
+
+.Title--withPadding {
+  padding: var(--Title-padding);
+}
+
+
+/* SG
+# Title Heading 
+
+The `.Title-heading` is the heading element which resides within `.Title`. This should start with a 
+*/
+.Title-heading {
+  margin-top: 0;
+}
+
+.Title-subHeading {
+  margin-top: ;
+}

@@ -1,0 +1,19 @@
+/** @define Container */
+/* 
+Container 
+  
+A container is any division of content designed to encapsulate sections of the page; e.g., the site header. The <code class="language-markup">.Container</code> class sets the <code class="language-css">max-width</code> and _(optionally)_ outer gutters. 
+
+Containers are always centered in the viewport and <code class="language-css">max-width</code> set by the 
+<code class="language-css">--site-width--max</code> variable.
+
+
+.Container              - Creates a new container context
+.Container--withGutter  - Adds <code class="language-css">.5vr</code> gutters above __sm__ viewport and <code class="language-css">1vr</code> on the __md__ viewport.
+  
+Styleguide: objects.container
+*/
+.Container {
+  max-width: var(--site-width--max);
+  margin: 0;
+}

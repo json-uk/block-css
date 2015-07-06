@@ -1,0 +1,13 @@
+/** 
+* @name Base 
+* @description Base styles of framework
+* 
+* @template layouts/app
+*/
+@import "sectioning.css";
+@import "links.css";
+@import "headings.css";
+@import "text.css";
+@import "text.semantics.css";
+@import "lists.css";
+@import "media.css";

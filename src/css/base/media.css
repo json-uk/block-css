@@ -1,0 +1,22 @@
+/*
+## Base Image Media Rules
+
+
+*/
+
+/*
+### Flexible Images
+
+Sets all media so they maintain they're aspect ratio 
+
+```HTML
+img, video, embed {
+  max-width: 100%;
+  height: auto; 
+}
+```
+*/
+img, video, embed {
+  max-width: 100%;
+  height: auto; 
+}

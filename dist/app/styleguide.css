@@ -1,0 +1,1270 @@
+@charset "UTF-8";
+/* settings */
+/* 
+Settings
+ 
+This is the settings file. Settings are global functional, colour and theme variables.
+ 
+Styleguide: Settings
+*/
+/*
+Variables
+
+Styleguide: settings.variables
+*/
+:root { /* Used for margin and padding multipliers */
+  
+  /*  
+  ### Vertical Rhythm  
+
+  Used as a base unit to multiply against. The rhythm is set by multiplying `--font-size` and `--line-height` variables.
+  For example, if you wanted to retun a value that was equal to 2x the vertical rhythm you would do the following:
+
+  ```CSS
+  .foo {
+      min-height: calc(var(--rhythm-unit) * 2);
+  ```
+
+  */  
+  
+  
+/* 
+### Aspect Ratios
+
+Common aspect ratio variables    
+*/ /* (9 / 16 * 100)  */ /* (4 / 5 * 100) */ /* (3 / 4 * 100) */ /* (2 / 3 * 100) */ /* (1 / 2 * 100) */ 
+
+
+/*
+## Global Site Min and Max Widths
+
+Min and max site widths are used in a couple ways. Min width is used for non-media query supporting browsers to set a fixed width. Max
+
+*//* [960 / 16 = 60]*//* [1360 / 16] */
+}
+
+/*
+## Custom Media Queries
+
+In block, we define a basic set of min and max-width edia queries. These are the ones used within components. Define additional media queries `settings.theme.css`. **Note:** to ensure your layouts scale and media queries are applied properly always use `em` unit.
+
+You will notice below two things: 1). There is not a min-width media designation for small screens, and 2). There isn't a max-width designation for lg screens. This is because, by default Bloc{CSS} is mobile-first and the first query is _no_ query. Second, we set a max-width globally and without a media query. You may add as many as your site requires, these are just the ones pre-designed.
+
+- `--md-viewport--min`: (540px) min-width of medium screens
+- `--lg-viewport--min`: (960px) min-width of lg screens
+- `--sm-viewport--max`: (539px) max-width of sm screens
+- `--md-viewport--max`: (959px) max-width of md screens
+
+### Define Custom Values
+
+To create custom variables for use in your media queries use the following formula where **<VAR_NAME>** is the name of your media variable, and **<EM_VALUE>** is the min or max width in ems. Notice the shorthand to min (`<=`) and max (`>=`) width: 
+
+- Min-Width: `@custom-media --<VAR_NAME> (width <= <EM_VALUE>)` 
+- Max-Width: `@custom-media --<VAR_NAME> (width >= <EM_VALUE>)`
+- Combination of both: `@custom-media --<VAR_NAME> (width <= <EM_VALUE>) and (width >= <EM_VALUE>)`
+
+### Usage
+
+```CSS
+@media all and (--md-viewport--min) {
+  .foo {
+    color: rebeccapurple;
+  }
+}
+
+```
+
+### CSS Output
+
+```CSS
+@media all and (min-width: 33.75em) {
+  .foo {
+    color: rebeccapurple;
+  }
+}
+
+  
+*/ /* [539 / 16] */ /* [959 / 16] */ /* [540 / 16] */ /* [960 / 16] */
+/*
+## Theme Variables
+
+
+*/
+
+/* 
+### Colours 
+
+By default, Block-CSS uses available palettes from [Web Colors](https://github.com/zaim/webcolors). Customise to create your own palettes...
+
+In **block-css.css** change (or remove) the `@import` statement that loads the palette where `%PaletteName%` is the palette
+you wish to use. 
+
+#### Available Palettes: 
+- `mrmrs`
+- `flatui`: [FlatUI colors](http://flatuicolors.co/) 
+- `material`: [Google Material Design](http://www.google.com/design/spec/style/color.html) 
+
+```
+@import "webcolors/%PaletteName%/index.css";
+```
+*/
+
+/* Main Colour Palette generated using http://www.materialpalette.com/indigo/orange 
+   
+   Based on: http://www.google.com/design/spec/style/color.html#color-color-palette
+*/
+:root {
+
+/*  Text on light backgrounds  */
+/*  Dark backgrounds */
+    
+    
+/*  Module-based colour variables  */
+  
+/*  Typography Vars  */
+    
+  
+/*  Font Stacks  */
+
+/*  Specific font stacks  */  
+
+/* Predefined weights */
+    
+    
+/*  
+## Font Sizes  
+
+Font sizes [loosely] based on the Golden Ratio
+    
+```CSS
+--text-size: var(--font-size);
+--text-size--small: 13px;
+--text-size--h1: 42px;
+--text-size--h2: 34px;
+--text-size--h3: 26px;
+--text-size--h4: 21px;
+--text-size--h5: var(--text-size);
+--text-size--h6: var(--text-size--small);
+```    
+*/   
+}
+/* tools */
+/**
+* @name Tools
+*
+* @description Global tools; public mixins and functions
+* @layout templates/app
+*/
+/* 
+* @name Custom Selectors
+* 
+* @description Custom selectors are pre-built selector groups used to reduce dev overhead. See [PostCSS Custom Selectors](https://github.com/postcss/postcss-custom-selectors) for more information
+*/
+
+/**
+@name :--any-link
+
+@desciption Emulates the :any-link pseudo-class
+
+@markup
+a:--any-link {
+  color: blue
+}
+*/
+/*
+### CSS Mixins
+
+These mixins follow the CSS level specification, yet are processed using PostCSS.
+
+See (PostCSS Mixins)[https://github.com/postcss/postcss-mixins] for more information
+
+*/
+/* generic */
+/**
+* @name Generic
+* 
+* @description Ground zero styles; resets and normalisation
+* @template layouts/app
+*/
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+
+figure {
+  margin: 1em 2.5rem;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+ */
+
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  box-sizing: content-box; /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+  border: 0.0625rem solid #c0c0c0;
+  margin: 0 0.125rem;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+/*
+## Generic Box-Sizing
+
+Updated to make overriding easier.
+*/
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+## Labotomised Owl Selector
+
+A generic style for setting consistent module margins. Read the A List Apart article: [Axiomatic CSS and Lobotomized Owls](http://alistapart.com/article/axiomatic-css-and-lobotomized-owls)
+
+Relies on `postcss-vertical-rhythm` to set vertical spacing
+
+```CSS
+* + * {
+  margin-top: 1vr;
+    
+}
+```
+
+*/
+* + * {
+  margin-top: 1.5rem;/* 24px */
+    
+}
+/* base */
+/** 
+* @name Base 
+* @description Base styles of framework
+* 
+* @template layouts/app
+*/
+/*
+## Basic Sectioning Elements
+
+
+*/
+html {
+  font-size: 100%;
+}
+body {
+  font: 1rem/1.5 Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/*
+## Links
+
+Basic links styles
+
+```HTML
+<a href="">Link</a>
+*/
+a:link,
+a:visited {
+  color: #FF9800;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #F57C00;
+  text-decoration: none;
+}
+/*
+## Headings
+
+*/
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0;
+  font-family: inherit;
+  font-weight: 600;
+}
+h1 {
+  font-size: 2.625rem;    
+}
+h2 {
+  font-size: 2.125rem;
+}
+h3 {
+  font-size: 1.625rem;
+}
+h4 {
+  font-size: 1.3125rem;
+}
+h5 {
+  font-size: 1rem;
+}
+h6 {
+  font-size: 0.8125rem;
+}
+/*
+## Base Text Elements
+
+
+*/
+p {
+  margin-bottom: 0;
+}
+figcaption {
+  margin: 0;
+}
+/*
+## Base Inline Text Elements
+
+
+*/
+strong {
+  font-weight: 600;
+}
+small {
+  font-size: 0.8125rem;
+}
+ul, ol {
+    
+}
+ul {
+
+}
+ol {
+
+}
+/*
+## Base Image Media Rules
+
+
+*/
+
+/*
+### Flexible Images
+
+Sets all media so they maintain they're aspect ratio 
+
+```HTML
+img, video, embed {
+  max-width: 100%;
+  height: auto; 
+}
+```
+*/
+img, video, embed {
+  max-width: 100%;
+  height: auto; 
+}
+/* objects */
+/*
+Objects
+
+Styleguide: objects
+*/
+/** @define Title */
+/* SG
+# Titles
+
+
+*/
+.Title {
+  width: 100%;  
+}
+
+.Title--page {
+    
+}
+
+.Title--section {
+  margin-top: 3rem;
+}
+
+.Title--withPadding {
+  padding: 0.75rem;
+}
+
+
+/* SG
+# Title Heading 
+
+The `.Title-heading` is the heading element which resides within `.Title`. This should start with a 
+*/
+.Title-heading {
+  margin-top: 0;
+}
+
+.Title-subHeading {
+  margin-top: ;
+}
+/** @define Container */
+/* 
+Container 
+  
+A container is any division of content designed to encapsulate sections of the page; e.g., the site header. The <code class="language-markup">.Container</code> class sets the <code class="language-css">max-width</code> and _(optionally)_ outer gutters. 
+
+Containers are always centered in the viewport and <code class="language-css">max-width</code> set by the 
+<code class="language-css">--site-width--max</code> variable.
+
+
+.Container              - Creates a new container context
+.Container--withGutter  - Adds <code class="language-css">.5vr</code> gutters above __sm__ viewport and <code class="language-css">1vr</code> on the __md__ viewport.
+  
+Styleguide: objects.container
+*/
+.Container {
+  max-width: 85em;
+  margin: 0;
+}
+/** @define Grid;weak */
+
+/*
+Grid
+
+The BlockCSS grid system is simple in nature, yet very powerful. 
+
+.Grid       - Creates the parent grid context. 
+.Grid-item  - CSS class for each immediate child grid __column__.
+
+
+Styleguide: objects.grid
+*/
+.Grid {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  text-align: left;
+}
+.Grid > * {
+  margin-top: 0;
+}
+.Grid > .Grid-item {
+  font-size: 1rem;
+}
+
+.Grid-item {
+  display: inline-block;
+  width: 100%; /* forces full-width by default */
+  vertical-align: top;
+}
+
+/*
+Grid System Modifiers
+
+Modifiers are special classes which extend the functionality of the grid system. Use them in conjunction with the 
+<code class="language-markup">.Grid</code> and <code class="language-markup">.Grid-item</code> classes.
+
+Styleguide: objects.grid.modifiers
+*/
+
+/*
+Grid Gutter Modifiers
+
+This adds gutters to the <code class="language-css">.Grid-item</code>s. 
+
+.Grid--withGutter    - Adds left and right padding equal to <code class="language-css">--Grid-gutter</code> variable.
+.Grid--withGutterX2  - Adds twice as much left and right padding.
+
+
+Styleguide: objects.grid.modifiers.gutters
+*/
+.Grid--withGutter {
+  margin-right: -0.75rem;
+  margin-left: -0.75rem;  
+}
+.Grid--withGutter > .Grid-item {
+ padding-right: 0.75rem;
+ padding-left: 0.75rem;
+}
+
+.Grid--withGutterX2 {
+  margin-right: -1.5rem;
+  margin-left: -1.5rem;  
+}
+
+.Grid--withGutterX2 > .Grid-item {
+ padding-right: 1.5rem;
+ padding-left: 1.5rem;
+}
+
+/*
+Grid Alignment Modifiers
+  
+Aligns all grid cells by adjusting <code class="language-css">text-align</code> and <code class="language-css">vertical-align</code> properties. 
+
+.Grid--alignCenter   - horizontally centers <code class="language-css">.Grid-item</code>s.
+.Grid--alignRight    - horizontally aligns <code class="language-css">.Grid-item</code>s to the right.
+.Grid--alignLeft     - horizontally aligns <code class="language-css">.Grid-item</code>s to the right.
+.Grid--alignMiddle   - vertically aligns <code class="language-css">.Grid-item</code>s to the midde of parent.
+.Grid--alignBottom   - vertically aligns <code class="language-css">.Grid-item</code>s to the bottom of parent.
+
+
+Styleguide: objects.grid.modifiers.align
+*/
+.Grid--alignCenter {
+  text-align: center;
+}
+
+.Grid--alignRight {
+  text-align: right;
+}  
+
+.Grid--alignLeft {
+  text-align: left;
+} 
+
+.Grid--alignMiddle > .Grid-item {
+  vertical-align: middle;
+}
+
+.Grid--alignBottom > .Grid-item {
+  vertical-align: bottom;
+}
+
+/*
+Grid Item Alignment 
+
+.Grid-item--center  - Centers a single grid cell. All other <code class="language-markup">.Grid-item</code>s remain the same.
+
+Styleguide: objects.grid.modifiers.center
+*/
+.Grid-item--center {
+  display: block;
+  margin: 0 auto;
+}
+/** @define Media; weak */
+
+/*
+Media
+
+Used to create container for media such as: images and video. Immediate child node must have a class of 
+<code class="language-markup">.Media-object</code> .
+
+Markup:
+  <figure class="Media">
+    <img class="Media-object" src="//dummyimage.com/600/545454/f5f5f5.jpg"/>
+  </figure>
+
+Styleguide: objects.media
+*/
+.Media {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+}
+
+.Media-item {
+  
+}
+/*
+Flexible Media
+
+Buy adding a class of <code class="language-markup">.Media--flex</code> to the Media container and combined with 
+<code class="language-markup">.Media--aspectRatioXbyY</code> classes creates a 
+container that maintains aspect ratio by using padding. 
+
+The <code class="language-markup">.Media-object</code> is absolutely positioned within the box and stretched to the edges. 
+
+.Media--flex.Media--ratio16by9  - 16:9 aspect ratio
+.Media--flex.Media--ratio5by4   - 5:4 aspect ratio
+.Media--flex.Media--ratio4by3   - 4:3 aspect ratio
+.Media--flex.Media--ratio3by2   - 3:2 aspect ratio
+.Media--flex.Media--ratio2by1   - 2:1 aspect ratio
+.Media--flex.Media--ratio1by1   - 1:1 aspect ratio
+
+Markup:
+<figure class="Media {{modifier_class}}">
+  <img class="Media-object" src="//dummyimage.com/600/545454/f5f5f5.jpg"/>
+</figure>
+
+
+Styleguide objects.media.flex
+*/
+.Media--flex {
+  height: 0;
+  overflow: hidden;
+}
+
+.Media--flex > .Media-object {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.Media--ratio16by9 {
+  padding-bottom: 56.25%;
+}
+
+.Media--ratio5by4 {
+  padding-bottom: 80%;
+}
+
+.Media--ratio4by3 {
+  padding-bottom: 75%;
+}
+
+.Media--ratio3by2 {
+  padding-bottom: 66.66%;
+}
+
+.Media--ratio2by1 {
+  padding-bottom: 50%;
+}
+
+.Media--ratio1by1 {
+  padding-bottom: 100%;
+}
+
+/*
+Flexible Media Backgrounds
+
+Flexible backgrounds support the same <code class="language-markup">.Media--ratioXbyY</code> classes. You must also add your own background-image styles (inline rule only an example.)
+
+Markup:
+<div class="Media Media--flex Media--flexBg Media--ratio16by9" style="background-image: url(//dummyimage.com/600/545454/f5f5f5.jpg);">
+  <!-- No content -->
+</div>
+
+
+
+Styleguide: objects.media.flex.background
+*/
+.Media--flexBg {
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+/* 
+Media Constrain (inline)
+
+This class constrains the image to the parent container instead of stretching it to fill.
+
+Markup:
+<figure class="Media Media--flex Media--ratio16by9 Media--constrain">
+  <img class="Media-object" src="//dummyimage.com/600/545454/f5f5f5.jpg"/>
+</figure>
+
+
+Styleguide: objects.media.flex.constrain
+*/
+.Media--constrain > .Media-object {
+  width: auto;
+  max-height: 100%;
+}
+
+/* 
+Media Constrain (backgrounds)
+
+Same as inline except using backgrounds. Browsers that do not support <code class="language-css">background-size</code> property will ignore this rule.
+
+Markup:
+<div class="Media Media--flex Media--flexBackground Media--ratio16by9 Media--constrainBg" style="background-image: url(//dummyimage.com/600/545454/f5f5f5.jpg);">
+  <!-- No content -->
+</div>
+
+Compatible in IE9+ and all modern browsers.  
+
+Styleguide: objects.media.flex.constrain.background
+*/
+.Media--constrainBg {
+  background-size: contain;
+}
+
+
+/* 
+Vertical and Horizontal Centering (inline)
+
+Markup:
+<figure class="Media Media--flex Media--ratio16by9 Media--center">
+  <img class="Media-object" src="//dummyimage.com/600/545454/f5f5f5.jpg"/>
+</figure>
+
+Styleguide: objects.media.flex.center
+*/
+.Media--center > .Media-object {
+  top: 50%;
+  left: 50%;    
+  -webkit-transform: translate3d(-50%, -50%, 0);    
+          transform: translate3d(-50%, -50%, 0);
+} 
+
+/* Fallback for older browsers */
+.no-transform .Media--center  > .Media-object {
+  margin-top: -50%;
+  margin-left: -50%;
+}
+
+/* 
+Vertical and Horizontal Centering (background)
+
+Markup:
+<div class="Media Media--flexBg Media--ratio16by9 Media--centerBg" style="background-image: url(//dummyimage.com/600/545454/f5f5f5.jpg);">
+  <!-- no content -->
+</div>
+
+Styleguide: objects.media.flex.center.background
+*/
+.Media--centerBg {
+  background-position: 50% 50%;
+}
+/* components */
+/**
+* @name Components
+* 
+* @description Component styles 
+* @template layouts/app
+*/
+/** @define Button */
+.Button {}
+.Button-content {}
+
+/* 
+### Button size modifiers*/
+.Button--sizeDefault {}
+.Button--sizeSmall {}
+.Button--sizeMedium {}
+.Button--sizeLarge {}
+/* trumps (utilities) here */
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: rgba(0, 0, 0, 0.87);
+	text-shadow: 0 1px rgba(255, 255, 255, 0.12);
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1.5;
+	-moz-tab-size: 2;
+	     tab-size: 2;
+	-webkit-hyphens: none;
+	   -moz-hyphens: none;
+	    -ms-hyphens: none;
+	        hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1.5rem;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: rgba(0, 0, 0, 0.12);
+}
+
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: 0.0625rem;
+	border-radius: 4px;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: 600;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/*# sourceMappingURL=styleguide.css.map */
