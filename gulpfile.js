@@ -158,7 +158,7 @@ gulp.task('styleguide', plugins.shell.task([
     templateData: {
       source:       basePaths.src + assetPaths.css,
       destination:  basePaths.sg,
-      css:          'styleguide.min.css',
+      css:          assetPaths.css + 'styleguide.min.css',
       js:           '',
       template:     basePaths.src + basePaths.sg,
       title:        'Bloc]{CSS - Simple Mobile-First CSS Framework'
