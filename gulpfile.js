@@ -92,7 +92,7 @@ var processors = {
 };
 
 
-gulp.task ('css', ['minify:css'], function (){
+gulp.task ('css', function (){
     
     return gulp.src(basePaths.src + assetPaths.css + appFiles.css)
         .pipe(plugins.sourcemaps.init())
@@ -102,7 +102,7 @@ gulp.task ('css', ['minify:css'], function (){
         .pipe(gulp.dest(basePaths.dest + assetPaths.css));
 });
 
-gulp.task ('css:styleguide', ['minify:sgcss'], function (){
+gulp.task ('css:styleguide', function (){
     return gulp.src(basePaths.src + basePaths.sg + appFiles.cssSG)
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.postcss(processors.modern))
@@ -167,9 +167,9 @@ gulp.task('styleguide', plugins.shell.task([
 ));
 
 gulp.task ('watch', function (){
-  gulp.watch(basePaths.src + assetPaths.css + '**/*.css', ['css', 'css:styleguide', 'styleguide']);
-  gulp.watch(basePaths.src + assetPaths.styleguide + '**/*.css', ['css:styleguide', 'styleguide']);
-  gulp.watch(basePaths.src + assetPaths.styleguide + '*.html', ['css:styleguide', 'styleguide']);
+  gulp.watch(basePaths.src + assetPaths.css + '**/*.css', ['css', 'css:styleguide', 'minify:css', 'minify:sgcss', 'styleguide']);
+  gulp.watch(basePaths.src + assetPaths.styleguide + '**/*.css', ['css:styleguide', 'minify:css', 'minify:sgcss', 'styleguide']);
+  gulp.watch(basePaths.src + assetPaths.styleguide + '*.html', ['css:styleguide', 'minify:sgcss', 'styleguide']);
 });
 
-gulp.task ('default', ['css','css:styleguide', 'styleguide', 'webserver', 'watch']);
+gulp.task ('default', ['css', 'css:styleguide', 'minify:css', 'minify:sgcss', 'styleguide', 'webserver', 'watch']);
