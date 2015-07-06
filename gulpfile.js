@@ -54,20 +54,14 @@ var appFiles = {
 // Paths to source and dest directories
 var basePaths = {
     src: 'src/',
-    dest: 'dist/'
+    dest: 'dist/',
+    sg: 'styleguide/'
 };
 
 // Paths to assets
 var assetPaths = {
-    css: 'css/',
-    app: 'app/',
-    styleguide: 'styleguide/'
+    css: 'css/'
 };
-
-var styleguideOptions = {
-  outputFile: basePaths.dest + assetPaths.app
-};
-
 
 var processors = {
   // Modern Browser Setup IE 9+
@@ -109,12 +103,12 @@ gulp.task ('css', ['minify:css'], function (){
 });
 
 gulp.task ('css:styleguide', ['minify:sgcss'], function (){
-    return gulp.src(basePaths.src + assetPaths.styleguide + appFiles.cssSG)
+    return gulp.src(basePaths.src + basePaths.sg + appFiles.cssSG)
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.postcss(processors.modern))
         .pipe(plugins.pxtorem(pxtoremOptions))
         .pipe(plugins.sourcemaps.write('.'))
-        .pipe(gulp.dest(basePaths.dest + assetPaths.app));
+        .pipe(gulp.dest(basePaths.sg + assetPaths.css));
 });
 
 
@@ -130,14 +124,14 @@ gulp.task ('minify:css', ['stats:css'], function () {
 });
 
 gulp.task ('minify:sgcss', function () {
-    return gulp.src(basePaths.dest + assetPaths.app + appFiles.cssSG)
+    return gulp.src(basePaths.sg + assetPaths.css + appFiles.cssSG)
         .pipe(plugins.cssmin({
           showLog: true
         }))
         .pipe(plugins.rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest(basePaths.dest + assetPaths.app));
+        .pipe(gulp.dest(basePaths.sg + assetPaths.css));
 });
 
 gulp.task ('stats:css', function () {
@@ -147,7 +141,7 @@ gulp.task ('stats:css', function () {
 });
 
 gulp.task('webserver', function() {
-  gulp.src(basePaths.dest + assetPaths.app)
+  gulp.src(basePaths.sg)
     .pipe(plugins.webserver({
       host:             server.host,
       port:             server.port,
@@ -163,11 +157,10 @@ gulp.task('styleguide', plugins.shell.task([
   ],{
     templateData: {
       source:       basePaths.src + assetPaths.css,
-      mask:         '^(?!(styleguide)\.(css)$).*\.(css)$',
-      destination:  basePaths.dest + assetPaths.app,
+      destination:  basePaths.sg,
       css:          'styleguide.min.css',
       js:           '',
-      template:     basePaths.src + assetPaths.styleguide,
+      template:     basePaths.src + basePaths.sg,
       title:        'Bloc]{CSS - Simple Mobile-First CSS Framework'
     }
   }

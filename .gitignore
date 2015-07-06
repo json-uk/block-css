@@ -9,7 +9,5 @@ ehthumbs.db
 Thumbs.db
 
 
-node_modules/
-dist/css
-dist/js
-dist/img
+/node_modules/*
+/dist/*
