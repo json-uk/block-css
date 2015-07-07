@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # OS generated files #
 ######################
 .DS_Store
@@ -12,3 +13,7 @@ Thumbs.db
 node_modules/
 dist/
 gh-pages/
+=======
+
+dist/
+>>>>>>> 70f9c76a381ded27c0badb2c4ac54ec6edaf4c40
