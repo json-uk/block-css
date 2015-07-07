@@ -55,7 +55,8 @@ var appFiles = {
 var basePaths = {
     src: 'src/',
     dest: 'dist/',
-    sg: 'styleguide/'
+    sg: 'styleguide/',
+    pages: 'gh-pages/'
 };
 
 // Paths to assets
@@ -66,6 +67,9 @@ var assetPaths = {
 var processors = {
   // Modern Browser Setup IE 9+
   modern: [
+    p.mixins,
+    p.nested,
+    p.verticalRhythm,
     p.cssnext({
         features: {
           customProperties: {
@@ -82,9 +86,6 @@ var processors = {
           }
         }
     }),
-    p.mixins,
-    p.nested,
-    p.verticalRhythm,
     p.fakeid()   
   ],
   // Legacy Browser Setup < IE9
@@ -108,7 +109,7 @@ gulp.task ('css:styleguide', function (){
         .pipe(plugins.postcss(processors.modern))
         .pipe(plugins.pxtorem(pxtoremOptions))
         .pipe(plugins.sourcemaps.write('.'))
-        .pipe(gulp.dest(basePaths.sg + assetPaths.css));
+        .pipe(gulp.dest(basePaths.pages + assetPaths.css));
 });
 
 
@@ -124,14 +125,14 @@ gulp.task ('minify:css', ['stats:css'], function () {
 });
 
 gulp.task ('minify:sgcss', function () {
-    return gulp.src(basePaths.sg + assetPaths.css + appFiles.cssSG)
+    return gulp.src(basePaths.pages + assetPaths.css + appFiles.cssSG)
         .pipe(plugins.cssmin({
           showLog: true
         }))
         .pipe(plugins.rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest(basePaths.sg + assetPaths.css));
+        .pipe(gulp.dest(basePaths.pages + assetPaths.css));
 });
 
 gulp.task ('stats:css', function () {
@@ -141,7 +142,7 @@ gulp.task ('stats:css', function () {
 });
 
 gulp.task('webserver', function() {
-  gulp.src(basePaths.sg)
+  gulp.src(basePaths.pages)
     .pipe(plugins.webserver({
       host:             server.host,
       port:             server.port,
@@ -150,14 +151,12 @@ gulp.task('webserver', function() {
     }));
 });
 
-
-
 gulp.task('styleguide', plugins.shell.task([
   'kss-node <%= source %> <%= destination %> --css <%= css %> --template <%= template %>'
   ],{
     templateData: {
       source:       basePaths.src + assetPaths.css,
-      destination:  basePaths.sg,
+      destination:  basePaths.pages,
       css:          assetPaths.css + 'styleguide.min.css',
       js:           '',
       template:     basePaths.src + basePaths.sg,
@@ -167,9 +166,9 @@ gulp.task('styleguide', plugins.shell.task([
 ));
 
 gulp.task ('watch', function (){
-  gulp.watch(basePaths.src + assetPaths.css + '**/*.css', ['css', 'css:styleguide', 'minify:css', 'minify:sgcss', 'styleguide']);
-  gulp.watch(basePaths.src + assetPaths.styleguide + '**/*.css', ['css:styleguide', 'minify:css', 'minify:sgcss', 'styleguide']);
-  gulp.watch(basePaths.src + assetPaths.styleguide + '*.html', ['css:styleguide', 'minify:sgcss', 'styleguide']);
+  gulp.watch(basePaths.src + assetPaths.css + '**/*.css', ['css', 'minify:css', 'styleguide','css:styleguide', 'minify:sgcss']);
+  gulp.watch(basePaths.src + assetPaths.styleguide + '**/*.css', ['styleguide', 'css:styleguide', 'minify:sgcss']);
+  gulp.watch(basePaths.src + assetPaths.styleguide + '*.html', ['styleguide', 'css:styleguide', 'minify:sgcss']);
 });
 
 gulp.task ('default', ['css', 'css:styleguide', 'minify:css', 'minify:sgcss', 'styleguide', 'webserver', 'watch']);
