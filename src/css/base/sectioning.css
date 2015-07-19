@@ -1,7 +1,9 @@
 /*
-## Basic Sectioning Elements
+Sectioning Elements
 
+The base sectioning element settings.
 
+Styleguide: base.sectioning
 */
 html {
   font-size: var(--root-font-size);

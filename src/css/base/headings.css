@@ -1,13 +1,25 @@
 /*
-## Headings
+Headings
 
+Basic heading size cascade; h1-6 
+
+Markup:
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h3>Heading 3</h3>
+  <h4>Heading 4</h4>
+  <h5>Heading 5</h5>
+  <h6>Heading 6</h6>
+
+Styleguide: base.headings
 */
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0;
   font-family: var(--heading-font);
   font-weight: var(--text-weight--bold);
 }
-h1 {
+h1
+{
   font-size: var(--text-size--h1);    
 }
 h2 {

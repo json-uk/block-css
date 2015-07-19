@@ -69,7 +69,7 @@ var processors = {
   modern: [
     p.mixins,
     p.nested,
-    p.verticalRhythm,
+    p.verticalRhythm,    
     p.cssnext({
         features: {
           customProperties: {
@@ -89,7 +89,16 @@ var processors = {
     p.fakeid()   
   ],
   // Legacy Browser Setup < IE9
-  legacy: []
+  legacy: [
+    p.cssnext({
+      features: {
+        rem: false,
+        filter: {
+          oldie: true
+        }
+      }
+    })
+  ]
 };
 
 

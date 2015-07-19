@@ -1,8 +1,7 @@
-/** 
-* @name Base 
-* @description Base styles of framework
-* 
-* @template layouts/app
+/*
+Base
+
+Styleguide: base
 */
 @import "sectioning.css";
 @import "links.css";
